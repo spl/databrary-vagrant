@@ -14,7 +14,17 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "bento/ubuntu-16.04"
 
-  # Provider-specific configuration for Parallels Desktop
+  # Provider-specific configurations
+
+  # VirtualBox
+  config.vm.provider :virtualbox do |vb|
+    # Disable hardware virtualization extensions. This is necessary for running
+    # on some cloud VM providers. You may want to comment this out for running
+    # on your own machine, which probably has the extensions enabled.
+    vb.customize ["modifyvm", :id, "--hwvirtex", "off"]
+  end
+
+  # Parallels Desktop
   config.vm.provider "parallels" do |prl|
     # Set the virtual machine name that appears in the Parallels Desktop GUI.
     prl.name = "databrary"
