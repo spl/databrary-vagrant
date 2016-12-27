@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   # Provider-specific configuration for Parallels Desktop
   config.vm.provider "parallels" do |prl|
     # Set the virtual machine name that appears in the Parallels Desktop GUI.
-    prl.name = "my_vm"
+    prl.name = "databrary"
     # Create VM as a Linked Clone:
     # * Linked clone creation is much faster than the full cloning because there
     #   is no image copying process.
@@ -33,11 +33,6 @@ Vagrant.configure("2") do |config|
     prl.cpus = 2
   end
 
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  # Enable provisioning with a shell script.
+  config.vm.provision "shell", path: "setup.sh"
 end
