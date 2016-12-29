@@ -24,7 +24,7 @@ apt-get -y install \
   happy-1.19.5 \
   libfdk-aac-dev \
   libmp3lame-dev \
-  libpam-cracklib \
+  libcrack2-dev \
   nodejs \
   oracle-java8-installer \
   postgresql \
