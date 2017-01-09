@@ -25,6 +25,7 @@ apt-get -y install \
   libfdk-aac-dev \
   libmp3lame-dev \
   libcrack2-dev \
+  libpcre3-dev \
   nodejs \
   oracle-java8-installer \
   postgresql \
