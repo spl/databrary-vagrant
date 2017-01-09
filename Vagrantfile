@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     #   corrupted. Be careful when deleting your boxes!
     prl.linked_clone = true
     # Set the memory size and number of CPUs
-    prl.memory = 2048
+    prl.memory = 4096
     prl.cpus = 2
   end
 
