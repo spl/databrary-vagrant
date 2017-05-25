@@ -1,15 +1,20 @@
 #!/bin/bash
 
-function set_bashrc_path() {
-  DIR="$1"
-  RC_FILE="$HOME/.bashrc"
-  if [[ -d "$DIR" ]]; then
-    SNIPPET="PATH=$DIR"
-    grep -q "$SNIPPET" "$RC_FILE" || echo 'export '"$SNIPPET"':$PATH' >> "$RC_FILE"
+function git_install() {
+  REPOSITORY="$1"
+  TARGET_DIR="$2"
+  if [[ -d "$TARGET_DIR" ]]; then
+    echo "$(basename $TARGET_DIR)"
+    pushd "$TARGET_DIR" &> /dev/null
+    git pull > /dev/null
+    popd &> /dev/null
+  else
+    git clone --recursive "$REPOSITORY" "$TARGET_DIR"
+    pushd "$TARGET_DIR" &> /dev/null
+    git config --local user.email 'sean.leather@gmail.com'
+    popd &> /dev/null
   fi
+  sh "$TARGET_DIR"/install.sh
 }
 
-set_bashrc_path /opt/alex/3.1.7/bin
-set_bashrc_path /opt/happy/1.19.5/bin
-set_bashrc_path /opt/cabal/bin
-set_bashrc_path /opt/ghc/7.10.3/bin
+git_install 'https://github.com/spl/databrary-ubuntu-config.git' "$HOME/._config"
