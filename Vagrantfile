@@ -14,6 +14,9 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "bento/ubuntu-16.04"
 
+  # Don't check for an updated box
+  config.vm.box_check_update = false
+
   # Provider-specific configurations
 
   # VirtualBox
